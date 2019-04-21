@@ -5,6 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import{OrderModule} from 'ngx-order-pipe';        
 import { AppComponent } from './app.component';
 import { SortingComponent } from './sorting/sorting.component';
+import { SortserviceService } from './sortservice.service';
+
 
 @NgModule({
   declarations: [
@@ -14,9 +16,10 @@ import { SortingComponent } from './sorting/sorting.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    OrderModule 
+    OrderModule ,
+   
   ],
-  providers: [],
+  providers: [SortserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SortserviceService } from '../sortservice.service';
+ 
 
-interface Idetails{
-  name:string,class:number,roll:number,address:string  
-}
 @Component({
   selector: 'app-sorting',
   templateUrl: './sorting.component.html',
@@ -12,16 +11,12 @@ interface Idetails{
 
 export class SortingComponent implements OnInit {
  
-
-  constructor() { }
+text;
+  constructor(private ss:SortserviceService) { }
 
   ngOnInit() {
-  }
- details:Idetails[]=[{'name':"navin",'class':8,'roll':5,'address':"kailali"},
- {'name':"navin",'class':12,'roll':5,'address':"kailali"},
- {'name':"navin",'class':8,'roll':5,'address':"kailali"}
-]
-
+this.text=this.ss.display()
+}
 }
 
 // note: without using interface we can run the code here.
