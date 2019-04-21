@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import{HttpClient } from '@angular/common/http';
+
 
 interface Idetails{
   name:string,class:number,roll:number,address:string  
@@ -7,13 +9,10 @@ interface Idetails{
   providedIn: 'root'
 })
 export class SortserviceService {
-
-  constructor() { }
-  details:Idetails[]=[{'name':"navin",'class':8,'roll':5,'address':"kailali"},
- {'name':"navin",'class':12,'roll':5,'address':"kailali"},
- {'name':"navin",'class':18,'roll':5,'address':"kailali"}
-]
+ url="https://jsonplaceholder.typicode.com/photos"
+  constructor(private http:HttpClient) { }
+  
 display(){
-  return this.details;
-}
-}
+  return this.http.get(this.url);
+
+}}
