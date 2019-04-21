@@ -1,16 +1,22 @@
-<table>
-  <tr><th>AlbumId</th>
-    <th>Id</th>
-    <th>Title</th>
-    <th>Url</th>
-    <th>ThumbnailUrl</th></tr>
+<table class="table table-row table-head table-border">
+  <tr><th [class.active]="order === 'id'"
+    (click)="setOrder('id')">Id<span [hidden]="reverse">&#8595;</span>
+    <span [hidden]="!reverse">&#8593;</span></th>
+    <th [class.active]="order === 'name'"
+    (click)="setOrder('name')">Name<span [hidden]="reverse">&#8595;</span><span [hidden]="!reverse">&#8593;</span></th>
+    <th [class.active]="order === 'username'"
+    (click)="setOrder('username')">Username<span [hidden]="reverse">&#8595;</span><span [hidden]="!reverse">&#8593;</span></th>
+    <th [class.active]="order === 'email'"
+    (click)="setOrder('email')">Email<span [hidden]="reverse">&#8595;</span><span [hidden]="!reverse">&#8593;</span></th>
+    <th [class.active]="order === 'address.street'"
+    (click)="setOrder('address.street')">Address<span [hidden]="reverse">&#8595;</span><span [hidden]="!reverse">&#8593;</span></th></tr>
 
-    <tr *ngFor="let text of sorting">
-      <td>{{text.albumId}}</td>
+    <tr *ngFor="let text of sorting|orderBy: order:reverse:'case-insensitive'">
       <td>{{text.id}}</td>
-      <td>{{text.title}}</td>
-      <td>{{text.url}}</td>
-      <td>{{text.thumbnailUrl}}</td>
+      <td>{{text.name}}</td>
+      <td>{{text.username}}</td>
+      <td>{{text.email}}</td>
+      <td>{{text.address.street}}</td>
 
     </tr>
 </table>
